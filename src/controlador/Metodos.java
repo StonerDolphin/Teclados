@@ -62,5 +62,83 @@ public class Metodos {
         }
         return false;
     }
+     
+     public boolean actualizarTeclado(Teclado teclado){
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "UPDATE  teclado SET marca_tec = ? ,precio_tec = ?)"
+                    + "WHERE  cod_tec = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,teclado.getCodTeclado());
+            ps.setString(2,teclado.getMarca());
+            ps.setInt(3,teclado.getPrecio());
+            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
+            return true;
+        } catch (Exception e) {
+            
+            System.out.println("Error al actualizar teclado - "+ e.getMessage());
+        }
+        return false;
+    }
+     
+     public boolean actualizarMouse(Mouses mouse){
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "UPDATE mouse SET marca_mou = ? ,precio_mou = ?)"
+                    + "WHERE  cod_mou = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,mouse.getCodMouse());
+            ps.setString(2,mouse.getMarca());
+            ps.setInt(3,mouse.getPrecio());
+            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
+            return true;
+        } catch (Exception e) {
+            
+            System.out.println("Error al actualizar mouse - "+ e.getMessage());
+        }
+        return false;
+    }
+     
+     
+     
+     public boolean eliminarTeclado(String codigo){
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "DELETE FROM teclado WHERE cod_tec = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,codigo);
+            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
+            return true;
+        } catch (Exception e) {
+            
+            System.out.println("Error al eliminar teclado - "+ e.getMessage());
+        }
+        return false;
+    }
+     
     
 }
