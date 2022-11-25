@@ -13,7 +13,6 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     
-    
         Connection conexion = null;
     public Connection conectar(){Connection conexion = null;
         try {
@@ -21,8 +20,11 @@ public class Conexion {
             
             conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/perifactori","root","");
             System.out.println("Conexión exitosa");
+            
         } catch (Exception e) {
+            
             System.out.println(e.getMessage());
+            
         } return conexion;
     }
 }
