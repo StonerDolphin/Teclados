@@ -18,9 +18,13 @@ public class Metodos {
             
             String query = "INSERT INTO teclado (cod_tec,marca_tec,precio_tec)"
                     + "VALUES (?,?,?)";
+            
             PreparedStatement ps = cn.prepareStatement(query);
             
             ps.setString(1,teclado.getCodTeclado());
+            ps.setString(2,teclado.());
+            ps.setString(3,teclado.getCodTeclado());
+            
             
             
             return true;
