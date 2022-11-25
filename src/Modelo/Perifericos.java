@@ -11,4 +11,14 @@ package Modelo;
 public class Perifericos {
     String marca;
     int precio;
+
+    public Perifericos() {
+    }
+
+    public Perifericos(String marca, int precio) {
+        this.marca = marca;
+        this.precio = precio;
+    }
+    
+    
 }
