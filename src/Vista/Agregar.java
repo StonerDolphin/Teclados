@@ -35,7 +35,9 @@ public class Agregar extends javax.swing.JFrame {
         jTextCodigo = new javax.swing.JTextField();
         jTextMarca = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btonLimpiar = new javax.swing.JButton();
+        jTextPrecio = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,12 +89,14 @@ public class Agregar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Limpiar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btonLimpiar.setText("Limpiar");
+        btonLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btonLimpiarActionPerformed(evt);
             }
         });
+
+        jLabel4.setText("Precio:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,21 +105,27 @@ public class Agregar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(optTeclado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(optMouse))
-                    .addComponent(jTextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel4)))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(optTeclado)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(optMouse))
+                        .addComponent(jTextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btonLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(21, 21, 21))
         );
@@ -127,12 +137,17 @@ public class Agregar extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar))
-                .addGap(94, 94, 94)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
                     .addComponent(jTextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(82, 82, 82)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btonLimpiar))
+                    .addComponent(jLabel4))
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -157,9 +172,9 @@ public class Agregar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextCodigoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonLimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btonLimpiarActionPerformed
 
     private void jTextMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMarcaActionPerformed
         // TODO add your handling code here:
@@ -168,18 +183,16 @@ public class Agregar extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
-        String Marca;
-        int codigo;
+        String Marca,codigo;
+        int Precio;
         char Tipo;
         Validacion val=new Validacion();
-        
-        String strValida=this.jTextCodigo.getText();
-        if(val.validaInt(strValida)){
-            codigo=Integer.parseInt(strValida);
-        }else{
-             JOptionPane.showMessageDialog(this,"Codigo es un Número","Validacion",JOptionPane.WARNING_MESSAGE);
-            this.jTextCodigo.requestFocus(); 
-            return;
+        codigo=this.jTextCodigo.getText();
+        if(!val.validaVacio(codigo))
+        {
+             JOptionPane.showMessageDialog(this,"Debes Ingresar Codigo","Validacion",JOptionPane.WARNING_MESSAGE);
+             this.jTextMarca.requestFocus(); 
+             return;
         }
         Marca=this.jTextMarca.getText();
         if(!val.validaVacio(Marca)){
@@ -188,6 +201,14 @@ public class Agregar extends javax.swing.JFrame {
              this.jTextMarca.requestFocus(); 
              return;
         }
+        String strValida=this.jTextPrecio.getText();
+        if (val.validaInt(strValida)){
+            Precio=Integer.parseInt(strValida);
+        }else{
+             JOptionPane.showMessageDialog(this,"Precio es Numero","Validacion",JOptionPane.WARNING_MESSAGE);
+             this.jTextPrecio.requestFocus(); 
+             return;  
+        }  
         if(optTeclado.isSelected()){
             JOptionPane.showMessageDialog(null,"Haz Guardado Teclado");
         }else if(optMouse.isSelected())
@@ -196,7 +217,7 @@ public class Agregar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Debes Seleccionar Tipo","Validacion",JOptionPane.WARNING_MESSAGE);
              this.optTeclado.requestFocus(); 
              return;  
-                }    
+        }       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -242,13 +263,15 @@ public class Agregar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo1;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btonLimpiar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextMarca;
+    private javax.swing.JTextField jTextPrecio;
     private javax.swing.JRadioButton optMouse;
     private javax.swing.JRadioButton optTeclado;
     // End of variables declaration//GEN-END:variables
