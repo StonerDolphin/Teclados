@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import bd.Conexion;
+import java.sql.Connection;
+
 /**
  *
  * @author felip
@@ -79,4 +82,6 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+Conexion cc = new Conexion();
+Connection cn = cc.conectar();
 }

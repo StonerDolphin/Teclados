@@ -9,5 +9,6 @@ package Modelo;
  * @author PROPIETARIO
  */
 public class Perifericos {
-    
+    String marca;
+    int precio;
 }

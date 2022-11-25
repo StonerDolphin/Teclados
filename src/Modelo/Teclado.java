@@ -8,6 +8,8 @@ package Modelo;
  *
  * @author PROPIETARIO
  */
-public class Teclado {
+public class Teclado extends Perifericos{
+    
+    
     
 }
