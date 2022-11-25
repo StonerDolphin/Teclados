@@ -22,13 +22,43 @@ public class Metodos {
             PreparedStatement ps = cn.prepareStatement(query);
             
             ps.setString(1,teclado.getCodTeclado());
-            ps.setString(2,teclado.());
-            ps.setString(3,teclado.getCodTeclado());
+            ps.setString(2,teclado.getMarca());
+            ps.setInt(3,teclado.getPrecio());
             
-            
-            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
             return true;
         } catch (Exception e) {
+            
+            System.out.println("Error al agregar teclado - "+ e.getMessage());
+        }
+        return false;
+    }
+    
+     public boolean agregarMouse(Mouses mouse){
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "INSERT INTO mouse (cod_mou,marca_mou,precio_mou)"
+                    + "VALUES (?,?,?)";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,mouse.getCodMouse());
+            ps.setString(2,mouse.getMarca());
+            ps.setInt(3,mouse.getPrecio());
+            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
+            return true;
+        } catch (Exception e) {
+            
+            System.out.println("Error al agregar mouse - "+ e.getMessage());
         }
         return false;
     }
