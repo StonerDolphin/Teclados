@@ -2,8 +2,15 @@
 package Vista;
 
 
+import bd.Conexion;
 import controlador.Metodos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class Listar1 extends javax.swing.JFrame {
 
+    
+    
 
     /**
      * Creates new form Listar
@@ -20,7 +29,36 @@ public class Listar1 extends javax.swing.JFrame {
         initComponents();
     }
 
-    
+       public void mostrarDatosMouse(String valor){
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("CODIGO");
+    modelo.addColumn("MARCA");
+    modelo.addColumn("PRECIO");
+    tblDatos.setModel(modelo);
+    String sql="";
+        if (valor.equals("")) {
+            sql="SELECT * FROM mouse";
+        } else{
+            sql="SELECT * FROM mouse WHERE cod_mou = '"+valor+"'";
+        }
+        String [] datos = new String[3];
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                modelo.addRow(datos);
+                
+                
+            }
+        } catch (SQLException ex) {
+        Logger.getLogger(Listar1.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -176,7 +214,9 @@ public class Listar1 extends javax.swing.JFrame {
         try {
             Metodos buscar = new Metodos();
             if (jRadioButtonMouse.isSelected()) {
+                mostrarDatosMouse("");
                 buscar.buscarMouse();
+                
             }
             if (jRadioButtonTeclado.isSelected()) {
                 buscar.buscarTeclado();
@@ -216,6 +256,6 @@ public class Listar1 extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonTeclado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBuscar;
-    private javax.swing.JTable tblDatos;
+    public javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
 }
