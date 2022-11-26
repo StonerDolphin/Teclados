@@ -2,7 +2,8 @@
 package Vista;
 
 import javax.swing.JOptionPane;
-import controlador.Validacion;
+import controlador.*;
+import Modelo.*;
 /**
  *
  * @author felip
@@ -218,6 +219,16 @@ public class Agregar extends javax.swing.JFrame {
              this.optTeclado.requestFocus(); 
              return;  
         }       
+        Teclado teclado = new Teclado(codigo, Marca, Precio);
+        Metodos guardarTeclado = new Metodos();
+        if (optTeclado.isSelected()) {
+            guardarTeclado.agregarTeclado(teclado);
+        }
+        Mouses mouse = new Mouses(codigo, Marca, Precio);
+        Metodos guardarMouse = new Metodos();
+        if (optMouse.isSelected()) {
+            guardarMouse
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
