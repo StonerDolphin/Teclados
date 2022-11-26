@@ -179,10 +179,9 @@ public class Agregar extends javax.swing.JFrame {
         jTextCodigo.setText("");
         jTextMarca.setText("");
         jTextPrecio.setText("");
+        Grupo1.clearSelection();
         
-        if (Grupo1.isSelected()) {
-            
-        }
+
     }//GEN-LAST:event_btonLimpiarActionPerformed
 
     private void jTextMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMarcaActionPerformed
