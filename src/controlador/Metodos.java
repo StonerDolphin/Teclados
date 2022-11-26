@@ -8,6 +8,7 @@ import bd.Conexion;
 import Modelo.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Metodos {
     
@@ -140,5 +141,87 @@ public class Metodos {
         return false;
     }
      
-    
+      public boolean eliminarMouse(String codigo){
+          
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "DELETE FROM mouse WHERE cod_mou = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,codigo);
+            
+            ps.executeUpdate();
+            ps.close();
+            cn.close();
+           
+            return true;
+        } catch (Exception e) {     
+            
+            System.out.println("Error al eliminar mouse - "+ e.getMessage());
+        }
+        return false;
+    }
+      
+       public Teclado buscarTeclado(String codigo){
+           
+           Teclado teclado = new Teclado();
+        try 
+        {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "SELECT cod_tec, marca_tec,precio_tec FROM teclado WHERE cod_tec = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,codigo);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) 
+            {
+                teclado.setCodTeclado(rs.getString("cod_tec"));
+                teclado.setMarca(rs.getString("marca_tec"));
+                teclado.setPrecio(rs.getInt("precio_tec"));
+            }
+            ps.close();
+            cn.close();
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error al buscar teclado - "+ e.getMessage());
+        }
+        return teclado;
+    }
+       
+       public Mouses buscarMouse(String codigo){
+           
+           Mouses mouse = new Mouses();
+        try 
+        {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
+            String query = "SELECT cod_mou, marca_mou, precio_mou FROM mouse WHERE cod_mou = ?";
+            
+            PreparedStatement ps = cn.prepareStatement(query);
+            
+            ps.setString(1,codigo);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) 
+            {
+                mouse.setCodMouse(rs.getString("cod_mou"));
+                mouse.setMarca(rs.getString("marca_mou"));
+                mouse.setPrecio(rs.getInt("precio_mou"));
+            }
+            ps.close();
+            cn.close();
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error al buscar mouse - "+ e.getMessage());
+        }
+        return mouse;
+    }
 }
