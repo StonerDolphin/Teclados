@@ -2,6 +2,7 @@
 package Vista;
 
 
+import controlador.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -173,7 +174,13 @@ public class Listar1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try {
-            
+            Metodos buscar = new Metodos();
+            if (jRadioButtonMouse.isSelected()) {
+                buscar.buscarMouse();
+            }
+            if (jRadioButtonTeclado.isSelected()) {
+                buscar.buscarTeclado();
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
