@@ -4,6 +4,7 @@ package Vista;
 import javax.swing.JOptionPane;
 import controlador.*;
 import Modelo.*;
+import javax.swing.JRadioButton;
 /**
  *
  * @author felip
@@ -175,6 +176,13 @@ public class Agregar extends javax.swing.JFrame {
 
     private void btonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonLimpiarActionPerformed
         // TODO add your handling code here:
+        jTextCodigo.setText("");
+        jTextMarca.setText("");
+        jTextPrecio.setText("");
+        
+        if (Grupo1.isSelected()) {
+            
+        }
     }//GEN-LAST:event_btonLimpiarActionPerformed
 
     private void jTextMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMarcaActionPerformed
@@ -227,7 +235,7 @@ public class Agregar extends javax.swing.JFrame {
         Mouses mouse = new Mouses(codigo, Marca, Precio);
         Metodos guardarMouse = new Metodos();
         if (optMouse.isSelected()) {
-            guardarMouse
+            guardarMouse.agregarMouse(mouse);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
