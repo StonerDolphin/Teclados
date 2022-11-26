@@ -59,6 +59,37 @@ public class Listar1 extends javax.swing.JFrame {
         Logger.getLogger(Listar1.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
+       
+          public void mostrarDatosTeclado(String valor){
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("CODIGO");
+    modelo.addColumn("MARCA");
+    modelo.addColumn("PRECIO");
+    tblDatos.setModel(modelo);
+    String sql="";
+        if (valor.equals("")) {
+            sql="SELECT * FROM teclado";
+        } else{
+            sql="SELECT * FROM teclado WHERE cod_tec = '"+valor+"'";
+        }
+        String [] datos = new String[3];
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                modelo.addRow(datos);
+                
+                
+            }
+        } catch (SQLException ex) {
+        Logger.getLogger(Listar1.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,11 +246,11 @@ public class Listar1 extends javax.swing.JFrame {
             Metodos buscar = new Metodos();
             if (jRadioButtonMouse.isSelected()) {
                 mostrarDatosMouse("");
-                buscar.buscarMouse();
+                
                 
             }
             if (jRadioButtonTeclado.isSelected()) {
-                buscar.buscarTeclado();
+                mostrarDatosTeclado("");
             }
         } catch (Exception e) {
         }
