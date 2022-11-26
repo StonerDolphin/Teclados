@@ -135,6 +135,11 @@ public class Listar1 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDatos);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
 
@@ -271,6 +276,20 @@ public class Listar1 extends javax.swing.JFrame {
     private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+             int fila = tblDatos.getSelectedRow();
+            String cod = "";
+               cod = tblDatos.getValueAt(fila, 0).toString();
+               Metodos eliminar = new Metodos();
+               if (jRadioButtonMouse.isSelected()) {
+            eliminar.eliminarMouse(cod);
+        }
+               if (jRadioButtonTeclado.isSelected()) {
+            eliminar.eliminarTeclado(cod);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
