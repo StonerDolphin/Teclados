@@ -285,9 +285,12 @@ public class Listar1 extends javax.swing.JFrame {
                Metodos eliminar = new Metodos();
                if (jRadioButtonMouse.isSelected()) {
             eliminar.eliminarMouse(cod);
+                   mostrarDatosMouse("");
         }
                if (jRadioButtonTeclado.isSelected()) {
             eliminar.eliminarTeclado(cod);
+            mostrarDatosTeclado("");
+            
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
