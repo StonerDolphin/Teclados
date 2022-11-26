@@ -96,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
         
          Agregar agregar = new Agregar();
         agregar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
