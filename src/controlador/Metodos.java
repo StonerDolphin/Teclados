@@ -9,6 +9,8 @@ import Modelo.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Metodos {
     
@@ -223,5 +225,59 @@ public class Metodos {
             System.out.println("Error al buscar mouse - "+ e.getMessage());
         }
         return mouse;
+    }
+       
+       public ArrayList<Teclado> buscarTeclado() {
+        ArrayList<Teclado> listaTeclados=new ArrayList<Teclado>();
+        
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+
+            String query = "SELECT cod_tec, marca_tec, precio_tec FROM teclado";
+            PreparedStatement ps = cn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Teclado teclado = new Teclado();
+                teclado.setCodTeclado(rs.getString("cod_tec"));
+                teclado.setMarca(rs.getString("marca_tec"));
+                teclado.setPrecio(rs.getInt("precio_tec"));
+
+                listaTeclados.add(teclado);
+            }
+            ps.close();
+            cn.close();
+            rs.close();
+        }  catch (Exception e) {
+            System.out.println("Error en Consultar Teclados - " + e.getMessage());
+        }
+        return listaTeclados;
+    }
+       
+       public ArrayList<Mouses> buscarMouse() {
+        ArrayList<Mouses> listaMouses =new ArrayList<Mouses>();
+        
+        try {
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+
+            String query = "SELECT cod_mou, marca_mou, precio_mou FROM mouse";
+            PreparedStatement ps = cn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mouses mouse = new Mouses();
+                mouse.setCodMouse(rs.getString("cod_mou"));
+                mouse.setMarca(rs.getString("marca_mou"));
+                mouse.setPrecio(rs.getInt("precio_mou"));
+
+                listaMouses.add(mouse);
+            }
+            ps.close();
+            cn.close();
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error en Consultar mouses - " + e.getMessage());
+        }
+        return listaMouses;
     }
 }
