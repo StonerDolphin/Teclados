@@ -319,8 +319,10 @@ public class Modificar extends javax.swing.JFrame {
             String query = "SELECT cod_tec, marca_tec, precio_tec FROM teclado WHERE cod_tec = "+guardarDato;
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
+            Teclado teclado = new Teclado();
             PreparedStatement ps = cn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+            //teclado.setCodTeclado(rs.getString)
          } catch (Exception e) {
          }
          
