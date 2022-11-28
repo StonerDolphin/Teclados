@@ -20,6 +20,8 @@ import javax.swing.table.TableModel;
 
 public class Listar1 extends javax.swing.JFrame {
 
+    public String guardarDato;
+    
     
     
 
@@ -308,6 +310,7 @@ public class Listar1 extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         Modificar mod = new Modificar();
+        mod.setDato(guardarDato);
         mod.setVisible(true);
         
         
@@ -315,8 +318,7 @@ public class Listar1 extends javax.swing.JFrame {
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
         TableModel tm = tblDatos.getModel();
-        String codigo = (String) tm.getValueAt(tblDatos.getSelectedRow(), 0);
-        System.out.println(codigo);
+        guardarDato = (String) tm.getValueAt(tblDatos.getSelectedRow(), 0);
     }//GEN-LAST:event_tblDatosMouseClicked
 
     /**

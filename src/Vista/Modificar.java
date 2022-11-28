@@ -308,4 +308,9 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JRadioButton optMouse;
     private javax.swing.JRadioButton optTeclado;
     // End of variables declaration//GEN-END:variables
+
+     public void setDato(String guardarDato) {
+         
+        
+    }
 }
