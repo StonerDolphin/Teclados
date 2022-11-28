@@ -11,6 +11,10 @@ package Vista;
 import controlador.*;
 import javax.swing.JOptionPane;
 import Modelo.*;
+import bd.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Modificar extends javax.swing.JFrame {
 
@@ -311,6 +315,14 @@ public class Modificar extends javax.swing.JFrame {
 
      public void setDato(String guardarDato) {
          
-        
+         try {
+            String query = "SELECT cod_tec, marca_tec, precio_tec FROM teclado WHERE cod_tec = "+guardarDato;
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            PreparedStatement ps = cn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+         } catch (Exception e) {
+         }
+         
     }
 }
