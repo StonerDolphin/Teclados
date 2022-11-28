@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import Vista.*;
 
 public class Metodos {
     
@@ -227,7 +229,7 @@ public class Metodos {
         return mouse;
     }
        
-       public ArrayList<Teclado> buscarTeclado() {
+       public ArrayList<Teclado> mostrarTeclado() {
         ArrayList<Teclado> listaTeclados=new ArrayList<Teclado>();
         
         try {
@@ -254,7 +256,7 @@ public class Metodos {
         return listaTeclados;
     }
        
-       public ArrayList<Mouses> buscarMouse() {
+       public ArrayList<Mouses> mostrarMouse() {
         ArrayList<Mouses> listaMouses =new ArrayList<Mouses>();
         
         try {
@@ -279,5 +281,5 @@ public class Metodos {
             System.out.println("Error en Consultar mouses - " + e.getMessage());
         }
         return listaMouses;
-    }
+    }      
 }

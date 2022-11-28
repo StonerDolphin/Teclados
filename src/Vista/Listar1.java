@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 
@@ -22,9 +23,6 @@ public class Listar1 extends javax.swing.JFrame {
     
     
 
-    /**
-     * Creates new form Listar
-     */
     public Listar1() {
         initComponents();
     }
@@ -132,6 +130,12 @@ public class Listar1 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDatos.setToolTipText("");
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos);
 
         btnEliminar.setText("Eliminar");
@@ -142,6 +146,11 @@ public class Listar1 extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,10 +234,10 @@ public class Listar1 extends javax.swing.JFrame {
                     .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonBuscarTodo)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BotonBuscarTodo)
-                        .addComponent(jRadioButtonMouse))
-                    .addComponent(jRadioButtonTeclado))
+                        .addComponent(jRadioButtonTeclado)
+                        .addComponent(jRadioButtonMouse)))
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,9 +254,12 @@ public class Listar1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        
+
+     
         try {
+            String codigo;
+            
+            codigo=this.jTextFieldBuscar.getText();
             Metodos buscar = new Metodos();
             if (jRadioButtonMouse.isSelected()) {
                 mostrarDatosMouse("");
@@ -293,6 +305,19 @@ public class Listar1 extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        Modificar mod = new Modificar();
+        mod.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        TableModel tm = tblDatos.getModel();
+        String codigo = (String) tm.getValueAt(tblDatos.getSelectedRow(), 0);
+        System.out.println(codigo);
+    }//GEN-LAST:event_tblDatosMouseClicked
 
     /**
      * @param args the command line arguments
