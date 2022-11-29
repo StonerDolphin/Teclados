@@ -334,8 +334,16 @@ public class Listar1 extends javax.swing.JFrame {
         String guardarDato = (String) tm.getValueAt(tblDatos.getSelectedRow(), 0);
         Modificar mod = new Modificar();
         mod.setVisible(true);
-        mod.setDatoTeclado(guardarDato);
-        mod.setDatoMouse(guardarDato);
+        
+        if (jRadioButtonTeclado.isSelected())
+        {
+            mod.setDatoTeclado(guardarDato);
+        }
+        if (jRadioButtonMouse.isSelected())
+        {
+            mod.setDatoMouse(guardarDato);
+        }
+        
         
         
     }//GEN-LAST:event_btnModificarActionPerformed

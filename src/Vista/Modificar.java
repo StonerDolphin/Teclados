@@ -356,10 +356,11 @@ public class Modificar extends javax.swing.JFrame {
                 String query = "SELECT cod_mou, marca_mou, precio_mou FROM mouse WHERE cod_mou = "+guardarDato;
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
-                Mouses mouse = new Mouses();
+
                 PreparedStatement ps = cn.prepareStatement(query);
-                
+       
                 ResultSet rs = ps.executeQuery();
+                Mouses mouse = new Mouses();
                 if(rs.next())
                 {
                 mouse.setCodMouse(rs.getString(1));
