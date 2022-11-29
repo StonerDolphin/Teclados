@@ -73,14 +73,15 @@ public class Metodos {
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
             
-            String query = "UPDATE  teclado SET marca_tec = ? ,precio_tec = ?)"
-                    + "WHERE  cod_tec = ?";
+            String query = "UPDATE  teclado SET marca_tec = ? ,precio_tec = ? "
+                    + "WHERE  cod_tec = ? ";
             
             PreparedStatement ps = cn.prepareStatement(query);
             
-            ps.setString(1,teclado.getCodTeclado());
-            ps.setString(2,teclado.getMarca());
-            ps.setInt(3,teclado.getPrecio());
+            ps.setString(3,teclado.getCodTeclado());
+            ps.setString(1,teclado.getMarca());
+            ps.setInt(2,teclado.getPrecio());
+            
             
             ps.executeUpdate();
             ps.close();
@@ -99,14 +100,14 @@ public class Metodos {
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
             
-            String query = "UPDATE mouse SET marca_mou = ? ,precio_mou = ?)"
-                    + "WHERE  cod_mou = ?";
+            String query = "UPDATE mouse SET marca_mou = ? ,precio_mou = ? "
+                    + "WHERE  cod_mou = ? ";
             
             PreparedStatement ps = cn.prepareStatement(query);
             
-            ps.setString(1,mouse.getCodMouse());
-            ps.setString(2,mouse.getMarca());
-            ps.setInt(3,mouse.getPrecio());
+            ps.setString(3,mouse.getCodMouse());
+            ps.setString(1,mouse.getMarca());
+            ps.setInt(2,mouse.getPrecio());
             
             ps.executeUpdate();
             ps.close();

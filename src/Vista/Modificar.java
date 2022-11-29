@@ -22,7 +22,9 @@ public class Modificar extends javax.swing.JFrame {
      * Creates new form Modificar
      */
     public Modificar() {
+        
         initComponents();
+        jTextCodigo.setEnabled(false);
     }
 
     /**
@@ -35,7 +37,7 @@ public class Modificar extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         btonLimpiar = new javax.swing.JButton();
         jTextPrecio = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -51,10 +53,10 @@ public class Modificar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -138,12 +140,12 @@ public class Modificar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btonLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(btnGuardar))
+                    .addComponent(btnModificar))
                 .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,7 +161,7 @@ public class Modificar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnModificar))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,7 +184,7 @@ public class Modificar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
 
         String Marca,codigo;
@@ -229,7 +231,7 @@ public class Modificar extends javax.swing.JFrame {
         if (optMouse.isSelected()) {
             update.actualizarMouse(mouse);
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btonLimpiarActionPerformed
         // TODO add your handling code here:
@@ -297,7 +299,7 @@ public class Modificar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btonLimpiar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton3;
@@ -313,18 +315,73 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JRadioButton optTeclado;
     // End of variables declaration//GEN-END:variables
 
-     public void setDato(String guardarDato) {
+     public void setDatoTeclado(String guardarDato) {
          
-         try {
-            String query = "SELECT cod_tec, marca_tec, precio_tec FROM teclado WHERE cod_tec = "+guardarDato;
-            Conexion cc = new Conexion();
-            Connection cn = cc.conectar();
-            Teclado teclado = new Teclado();
-            PreparedStatement ps = cn.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            //teclado.setCodTeclado(rs.getString)
-         } catch (Exception e) {
+
+            try {
+                String query = "SELECT cod_tec, marca_tec, precio_tec FROM teclado WHERE cod_tec = "+guardarDato;
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                Teclado teclado = new Teclado();
+                PreparedStatement ps = cn.prepareStatement(query);
+                
+                ResultSet rs = ps.executeQuery();
+                if(rs.next())
+                {
+                teclado.setCodTeclado(rs.getString(1));
+                teclado.setMarca(rs.getString(2));
+                teclado.setPrecio(rs.getInt(3));
+                }
+                
+             
+                ps.close();
+                cn.close();
+                rs.close();
+                jTextCodigo.setText(teclado.getCodTeclado());
+                jTextMarca.setText(teclado.getMarca());
+                jTextPrecio.setText(String.valueOf(teclado.getPrecio()));
+           } catch (Exception e) {
+               
+               System.out.println("dato");
+               System.out.println(e.getMessage());
+               
+           }
+                 
          }
+     
+     public void setDatoMouse(String guardarDato) {
          
-    }
+
+            try {
+                String query = "SELECT cod_mou, marca_mou, precio_mou FROM mouse WHERE cod_mou = "+guardarDato;
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                Mouses mouse = new Mouses();
+                PreparedStatement ps = cn.prepareStatement(query);
+                
+                ResultSet rs = ps.executeQuery();
+                if(rs.next())
+                {
+                mouse.setCodMouse(rs.getString(1));
+                mouse.setMarca(rs.getString(2));
+                mouse.setPrecio(rs.getInt(3));
+                }
+                
+                ps.close();
+                cn.close();
+                rs.close();
+                
+                jTextCodigo.setText(mouse.getCodMouse());
+                jTextMarca.setText(mouse.getMarca());
+                jTextPrecio.setText(String.valueOf(mouse.getPrecio()));
+                
+           } catch (Exception e) {
+               
+               System.out.println("dato");
+               System.out.println(e.getMessage());
+               
+           }
+                 
+         }
+       
 }
